@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Mon panier – PrimeLink</title>
+ <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ <header class="header">
+ <a href="index.html" class="header__logo">
+ <img src="PRIMELINK_Logo-2.png" alt="PrimeLink" width="48" height="48" />
+ <span>PrimeLink</span>
+ </a>
+ <h1 class="cartpage__title"> Mon panier</h1>
+ </header>
+
+ <main class="cartpage">
+ <div class="cartpage__container">
+ <section class="cartpage__items" id="cartList"></section>
+
+ <aside class="cartpage__summary">
+ <h2>Résumé</h2>
+ <p>Sous-total : <strong id="subTotal">0 FCFA</strong></p>
+ <p>Frais estimés : <strong>0 FCFA</strong></p>
+ <hr>
+ <h3>Total : <strong id="total">0 FCFA</strong></h3>
+ <button id="checkoutBtn" class="cart__checkout">Commander</button>
+ <button id="clearCart" class="cart__view">Vider le panier</button>
+ </aside>
+ </div>
+ </main>
+
+ <footer class="footer">
+ <p>© 2025 PrimeLink Traders • Tous droits réservés</p>
+ </footer>
+
+ <script src="script.js"></script>
+ <script>
+ const currency = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'XOF', maximumFractionDigits: 0 });
+ const cartKey = 'primelink_cart_v1';
+ let cart = JSON.parse(localStorage.getItem(cartKey) || '[]');
+ const list = document.getElementById('cartList');
+ const sub = document.getElementById('subTotal');
+ const total = document.getElementById('total');
+ const clearBtn = document.getElementById('clearCart');
+
+ function renderCart(){
+ list.innerHTML = '';
+ if(cart.length === 0){
+ list.innerHTML = '<p class="empty">Votre panier est vide.</p>';
+ sub.textContent = '0 FCFA';
+ total.textContent = '0 FCFA';
+ return;
+ }
+
+ let subtotal = 0;
+ cart.forEach((item, i)=>{
+ const row = document.createElement('div');
+ row.className = 'cartpage__row';
+ subtotal += item.price * item.qty;
+ row.innerHTML = `
+ <img src="${item.img}" alt="${item.name}">
+ <div class="info">
+ <h3>${item.name}</h3>
+ <p>${currency.format(item.price)}</p>
+ </div>
+ <div class="qty">
+ <button class="minus" data-i="${i}">−</button>
+ <span>${item.qty}</span>
+ <button class="plus" data-i="${i}">+</button>
+ </div>
+ <button class="remove" data-i="${i}">✕</button>
+ `;
+ list.appendChild(row);
+ });
+
+ sub.textContent = currency.format(subtotal);
+ total.textContent = currency.format(subtotal); // tu pourras ajouter TVA + livraison ici
+
+ // Événements
+ list.querySelectorAll('.plus').forEach(b=>b.onclick=()=>{cart[b.dataset.i].qty++;save();});
+ list.querySelectorAll('.minus').forEach(b=>b.onclick=()=>{
+ const i=b.dataset.i;
+ if(cart[i].qty>1)cart[i].qty--;else cart.splice(i,1);
+ save();
+ });
+ list.querySelectorAll('.remove').forEach(b=>b.onclick=()=>{
+ cart.splice(b.dataset.i,1); save();
+ });
+ }
+
+ function save(){
+ localStorage.setItem(cartKey, JSON.stringify(cart));
+ renderCart();
+ }
+
+ clearBtn.onclick = ()=>{
+ if(confirm("Vider le panier ?")){
+ cart=[]; save();
+ }
+ };
+
+ renderCart();
+ </script>
+</body>
+</html>

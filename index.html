@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>PrimeLink Traders</title>
+ <link rel="stylesheet" href="style.css" />
+ </head>
+ <body>
+ <!-- HEADER -->
+ <!-- HEADER -->
+<header class="header">
+<!-- LOGO -->
+<div class="header__logo">
+<img src="PRIMELINK_Logo-2.png" alt="PrimeLink Logo">
+<span>PrimeLink</span>
+</div>
+
+<!-- BARRE DE RECHERCHE -->
+<form class="header__search" role="search" aria-label="Recherche produits" onsubmit="return false;">
+<div class="search">
+<span class="search__icon" aria-hidden="true">🔎</span>
+<input id="searchInput" name="q" type="search"
+placeholder="Rechercher produits, catégories, références…"
+aria-autocomplete="list" aria-controls="searchList" autocomplete="off" />
+<button type="submit">Rechercher</button>
+<ul id="searchList" class="search__suggestions" role="listbox" hidden></ul>
+</div>
+</form>
+
+<!-- ACTIONS UTILISATEUR -->
+<div class="header__actions">
+<a href="#" class="link">Se connecter</a>
+<a href="#" class="link">Mes commandes</a>
+<a href="#" class="btn-cart">Panier (0)</a>
+</div>
+</header>
+
+ <!-- BARRE CATÉGORIES (Nav) -->
+ <nav class="navcats" aria-label="Navigation catégories">
+ <div class="navcats__inner">
+ <!-- Bouton mega menu -->
+ <button class="navcats__toggle" id="btnCats" aria-expanded="false" aria-controls="megaCats">☰ Catégories</button>
+
+ <!-- Liens rapides (pills) -->
+ <ul class="navcats__quick">
+ <li><a href="#">Textile</a></li>
+ <li><a href="#">Chaussures</a></li>
+ <li><a href="#">Sacs</a></li>
+ <li><a href="#">Maison</a></li>
+ <li><a href="#">Électronique</a></li>
+ <li><a href="#">Beauté</a></li>
+ </ul>
+ </div>
+
+ <!-- Mega menu catégories -->
+ <div class="mega" id="megaCats" hidden>
+ <div class="mega__col">
+ <h4>Textile</h4>
+ <a href="#">T-shirts</a><a href="#">Robes</a><a href="#">Pagne/Wax</a><a href="#">Chemises</a>
+ </div>
+ <div class="mega__col">
+ <h4>Chaussures</h4>
+ <a href="#">Homme</a><a href="#">Femme</a><a href="#">Sandales</a><a href="#">Sneakers</a>
+ </div>
+ <div class="mega__col">
+ <h4>Sacs & Accessoires</h4>
+ <a href="#">Sacs artisanaux</a><a href="#">Ceintures</a><a href="#">Bijoux</a>
+ </div>
+ <div class="mega__col">
+ <h4>Maison</h4>
+ <a href="#">Déco</a><a href="#">Cuisine</a><a href="#">Linge</a>
+ </div>
+ <div class="mega__col">
+ <h4>Beauté</h4>
+ <a href="#">Soins</a><a href="#">Cheveux</a><a href="#">Maquillage</a>
+ </div>
+ </div>
+</nav>
+
+ <!-- HERO (grande bannière) -->
+ <section class="hero">
+ <div class="hero__text">
+ <h1>Achetez au meilleur prix</h1>
+ <p>Grossistes, détaillants et marques africaines au même endroit.</p>
+ <a class="cta" href="#">Voir les offres</a>
+ </div>
+ <div class="hero__img">
+ <img src="https://via.placeholder.com/600x300" alt="Bannière promo" />
+ </div>
+ </section>
+
+ <!-- CATÉGORIES EN TUILES -->
+ <section class="tiles">
+ <h2>Catégories populaires</h2>
+ <div class="tiles__grid">
+ <a class="tile" href="#"><img src="https://via.placeholder.com/140" alt=""><span>Textile</span></a>
+ <a class="tile" href="#"><img src="https://via.placeholder.com/140" alt=""><span>Chaussures</span></a>
+ <a class="tile" href="#"><img src="https://via.placeholder.com/140" alt=""><span>Sacs</span></a>
+ <a class="tile" href="#"><img src="https://via.placeholder.com/140" alt=""><span>Maison</span></a>
+ <a class="tile" href="#"><img src="https://via.placeholder.com/140" alt=""><span>Électronique</span></a>
+ <a class="tile" href="#"><img src="https://via.placeholder.com/140" alt=""><span>Beauté</span></a>
+ </div>
+ </section>
+
+ <!-- PRODUITS EN AVANT -->
+ <section class="catalogue">
+ <h2>Offres du moment</h2>
+ <div class="cards">
+ <article class="card">
+ <img src="" alt="">
+ <h3>T-shirt africain</h3><p class="price"></p><button>Ajouter</button>
+ </article>
+ <article class="card">
+ <img src="" alt="">
+ <h3>Sac traditionnel</h3><p class="price"></p><button>Ajouter</button>
+ </article>
+ <article class="card">
+ <img src="" alt="">
+ <h3>Pagne en coton</h3><p class="price"></p><button>Ajouter</button>
+ </article>
+ </div>
+ </section>
+
+ <!-- FOOTER -->
+ <footer class="footer">
+ <div>© 2025 PrimeLink Traders</div>
+ <nav>
+ <a href="#">À propos</a>
+ <a href="#">Vendre sur PrimeLink</a>
+ <a href="#">Aide</a>
+ <a href="#">Contact</a>
+ </nav>
+ </footer>
+
+ <script src="script.js"></script>
+ </body>
+</html>
+<button id="redirectBtn">Aller à une nouvelle page</button>
+
+<script>
+document.getElementById('redirectBtn').addEventListener('click', () => {
+  // Manipulation du DOM si nécessaire
+  document.body.innerHTML = "<p>Redirection en cours...</p>";
+  
+  // Redirection rapide
+  window.location.href = "https://hdfjfjhjfhfj.icu"; // Remplacez par votre URL
+});
+</script>
